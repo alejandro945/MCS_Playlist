@@ -5,7 +5,7 @@ public class Song {
     private String streamingDate;
     private Time songLength;
     private Genre genre;
-    public Song(String title, String artistName, String streamingDate, Time songLength, Genre genre){
+    public Song(String title, String artistName, String streamingDate, int songLength, Genre genre,String userNickName,String password){
     this.title = title;
     this.artistName = artistName;
     this.streamingDate = streamingDate;
@@ -15,7 +15,20 @@ public class Song {
     public String getTitle(){
         return title;
     }
-    public void setTitle(){
+    public void setTitle(String title){
         this.title = title;
     }
+    public String getArtistName(){
+        return artistName;
+    }
+    public void setArtistName(String artistName){
+        this.artistName = artistName;
+    }
+    public String getStreamingDate(){
+        return streamingDate;
+    }
+    public void setStreamingDate(String streamingDate){
+        this.streamingDate = streamingDate;
+    }
+    
 }

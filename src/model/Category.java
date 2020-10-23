@@ -1,4 +1,4 @@
 package model;
-public enum Category {
+public enum UserCategory {
     NEWBY,LITTLE_CONTRIBUTOR,MILD_CONTRIBUTOR,STAR_CONTRIBUTOR;
 }
