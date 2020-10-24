@@ -10,7 +10,7 @@ public class User{
       this.userNickName = userNickname;
       this.password = password;
       this.age = age;
-      userCategory = UserCategory.NEWBY;
+      userCategory = UserCategory.NEWBIE;
      }
      public String getUserNickName(){
           return userNickName;
@@ -30,8 +30,27 @@ public class User{
      public void setAge(int age){
           this.age = age;
      }
-     public void setCategory(Category userCategory){
-       
+     public int getCategory(){
+          return userCategory;
      }
+     public void setCategory(int category){
+       if(category==1){
+          this.userCategory = userCategory.NEWBIE; 
+       }else if(category==2){
+          this.userCategory = userCategory.LITTLE_CONTRIBUTOR;
+       }else if(category==3){
+          this.userCategory = userCategory.MILD_CONTRIBUTOR;    
+       }else if(category==4){
+          this.userCategory = userCategory.STAR_CONTRIBUTOR;
+       }
+     }
+     public String showContents(){
+          String contents = "************* User **************\n";
+          contents+= "** Username: "+ getUserNickName() + "\n";
+          contents+= "** Age: "+ getAge() + "\n";
+          contents+= "** Category: "+ getCategory() + "\n";
+          contents+= "**********************************";
+          return contents;
+      }
 
 }
