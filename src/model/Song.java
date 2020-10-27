@@ -8,14 +8,14 @@ public class Song {
     private String songOwner;
     private String ownerPassword;
 
-    public Song(String title, String artistName, String streamingDate, int songLength, Genre genre,String songOwner,String ownwerPassword){
+    public Song(String title, String artistName, String streamingDate, int songLength, Genre genre,String songOwner,String ownerPassword){
     this.title = title;
     this.artistName = artistName;
     this.streamingDate = streamingDate;
     this.songLength = songLength;
     this.genre = genre;
     this.songOwner = songOwner;
-    this.ownerPassword = ownwerPassword;
+    this.ownerPassword = ownerPassword;
     }
     public String getTitle(){
         return title;
@@ -72,7 +72,7 @@ public class Song {
         contents+= "** Artist: "+ getArtistName() + "\n";
         contents+= "** Duration: "+ formatLength(getSongLength()) + "\n";
         contents+= "** Genre: "+ getSongGenre() + "\n";
-        contents+= "**********************************";
+        contents+= "**********************************\n";
         return contents;
     }
 }

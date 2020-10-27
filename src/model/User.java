@@ -30,18 +30,18 @@ public class User{
      public void setAge(int age){
           this.age = age;
      }
-     public int getCategory(){
+     public UserCategory getCategory(){
           return userCategory;
      }
      public void setCategory(int category){
        if(category==1){
-          this.userCategory = userCategory.NEWBIE; 
+          this.userCategory = UserCategory.NEWBIE; 
        }else if(category==2){
-          this.userCategory = userCategory.LITTLE_CONTRIBUTOR;
+          this.userCategory = UserCategory.LITTLE_CONTRIBUTOR;
        }else if(category==3){
-          this.userCategory = userCategory.MILD_CONTRIBUTOR;    
+          this.userCategory = UserCategory.MILD_CONTRIBUTOR;    
        }else if(category==4){
-          this.userCategory = userCategory.STAR_CONTRIBUTOR;
+          this.userCategory = UserCategory.STAR_CONTRIBUTOR;
        }
      }
      public String showContents(){
@@ -49,7 +49,7 @@ public class User{
           contents+= "** Username: "+ getUserNickName() + "\n";
           contents+= "** Age: "+ getAge() + "\n";
           contents+= "** Category: "+ getCategory() + "\n";
-          contents+= "**********************************";
+          contents+= "**********************************\n";
           return contents;
       }
 
