@@ -1,11 +1,9 @@
 package model;
-public class Playlist {
-    private static final int GENRES = 7;
-    private static final int MAX_SONGS = 30;
+public  abstract class Playlist {
+    private static final int GENRES = 6;
 
     private String playlistName;
     private int playlistType;
-    private Song[] songList;
     private int playlistLength;
     private Genre[] genres;
     
@@ -14,7 +12,6 @@ public class Playlist {
      this.playlistType = playlistType;
      playlistLength = 0;
      genres = new Genre[GENRES];
-     songList= new Song[MAX_SONGS];
     }
     public String getPlaylistName(){
         return playlistName;
@@ -31,29 +28,47 @@ public class Playlist {
     public int getPlaylistLength(){
         return playlistLength;
     }
-    public void setPlaylistNameLength(int playlistLength){
+    public void setPlaylistLength(int playlistLength){
         this.playlistLength = playlistLength;
     }
     public Genre[] getGenres(){
         return genres;
     }
-    public Song[] getSongList(){
-        return songList;
-    }
-    public void setSongList(Song song){
-        boolean space = false;
-        for(int i = 0; i<MAX_SONGS && !space;i++){
-        this.songList[i] = song;
-        space = true;
+    public String calculatePlaylistLength(int totalLength){
+        int hours = (int)(totalLength/3600);
+        int minutes = (int)((totalLength-hours*3600)/60);
+        int seconds = (int)(totalLength-(hours*3600+minutes*60));
+        String format = (hours + " horas " + minutes +" minutos " + seconds + " segundos ");
+        return format;
+      }
+      public void setGenres(Genre[] genre){
+        for(int i = 0; i<genre.length;i++){
+                for(int j = 0; j<genre.length;j++){
+                    if(genre[i]!=null && i != j){
+                        if (genre[i].equals(genre[j])) {
+                            genre[j] = null; 
+                        }
+                }
+              }
+            }
+        for(int k = 0;k<GENRES;k++){
+            if(genre[k] != null){
+                this.genres[k] = genre[k]; 
+            }
         }
-        
-    }
+      }
+      public abstract String showInfo();
     public String showContents(){
         String contents = "************* Playlist **************\n";
         contents+= "** Title: "+ getPlaylistName() + "\n";
-        contents+= "** Duration: "+ getPlaylistLength() + "\n";
-        contents+= "** Genre: "+ getGenres() + "\n";
-        contents+= "**********************************\n";
+        contents+= "** Duration: "+ calculatePlaylistLength(getPlaylistLength())  + "\n";
+        contents+= "** Genre: ";
+        for(int i= 0;i<GENRES;i++){
+            if(genres[i] != null){
+            contents+= genres[i] + ", " ;
+            }
+        }
+        contents+= "\n"+"**************************************\n";
         return contents;
     }
 }
