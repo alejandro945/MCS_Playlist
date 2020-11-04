@@ -12,27 +12,59 @@ public class User{
       this.age = age;
       userCategory = UserCategory.NEWBIE;
      }
+     
+     /** 
+      * @return String
+      */
      public String getUserNickName(){
           return userNickName;
      }
+     
+     /** 
+      * @param userNickname
+      */
      public void setUserNickName(String userNickname){
           this.userNickName = userNickname;
      }
+     
+     /** 
+      * @return String
+      */
      public String getPassword(){
           return password;
      }
+     
+     /** 
+      * @param password
+      */
      public void setPassword(String password){
           this.password = password;
      }
+     
+     /** 
+      * @return int
+      */
      public int getAge(){
           return age;
      }
+     
+     /** 
+      * @param age
+      */
      public void setAge(int age){
           this.age = age;
      }
+     
+     /** 
+      * @return UserCategory
+      */
      public UserCategory getCategory(){
           return userCategory;
      }
+     
+     /** 
+      * @param category
+      */
      public void setCategory(int category){
        if(category==1){
           this.userCategory = UserCategory.NEWBIE; 
@@ -44,6 +76,10 @@ public class User{
           this.userCategory = UserCategory.STAR_CONTRIBUTOR;
        }
      }
+     
+     /** 
+      * @return String
+      */
      public String showContents(){
           String contents = "************* User **************\n";
           contents+= "** Username: "+ getUserNickName() + "\n";

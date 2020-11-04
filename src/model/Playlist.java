@@ -13,27 +13,60 @@ public  abstract class Playlist {
      playlistLength = 0;
      genres = new Genre[GENRES];
     }
+    
+    /** 
+     * @return String
+     */
     public String getPlaylistName(){
         return playlistName;
     }
+    
+    /** 
+     * @param playlistName
+     */
     public void setPlaylistName(String playlistName){
         this.playlistName = playlistName;
     }
+    
+    /** 
+     * @return int
+     */
     public int getPlaylistType(){
         return playlistType;
     }
+    
+    /** 
+     * @param playlistType
+     */
     public void setPlaylistNameType(int playlistType){
         this.playlistType = playlistType;
     }
+    
+    /** 
+     * @return int
+     */
     public int getPlaylistLength(){
         return playlistLength;
     }
+    
+    /** 
+     * @param playlistLength
+     */
     public void setPlaylistLength(int playlistLength){
         this.playlistLength = playlistLength;
     }
+    
+    /** 
+     * @return Genre[]
+     */
     public Genre[] getGenres(){
         return genres;
     }
+    
+    /** 
+     * @param totalLength
+     * @return String
+     */
     public String calculatePlaylistLength(int totalLength){
         int hours = (int)(totalLength/3600);
         int minutes = (int)((totalLength-hours*3600)/60);
@@ -41,6 +74,10 @@ public  abstract class Playlist {
         String format = (hours + " horas " + minutes +" minutos " + seconds + " segundos ");
         return format;
       }
+      
+      /** 
+       * @param genre
+       */
       public void setGenres(Genre[] genre){
         for(int i = 0; i<genre.length;i++){
                 for(int j = 0; j<genre.length;j++){
@@ -57,7 +94,16 @@ public  abstract class Playlist {
             }
         }
       }
+      
+      /** 
+       * @param showContents(
+       * @return String
+       */
       public abstract String showInfo();
+    
+    /** 
+     * @return String
+     */
     public String showContents(){
         String contents = "************* Playlist **************\n";
         contents+= "** Title: "+ getPlaylistName() + "\n";

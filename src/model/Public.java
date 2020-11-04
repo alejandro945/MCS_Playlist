@@ -10,9 +10,17 @@ public class Public extends Playlist {
         scoreAverages = new int[MAX_PUBLIC_SCORES];
         songList = new Song[MAX_SONGS];
     }
+    
+    /** 
+     * @return Song[]
+     */
     public Song[] getSongList(){
       return songList;
     }
+    
+    /** 
+     * @param song
+     */
     public void setSongList(Song song){
       boolean space = false;
       for(int i = 0; i<MAX_SONGS && !space;i++){
@@ -22,9 +30,17 @@ public class Public extends Playlist {
           }
         }
     }
+  
+  /** 
+   * @return int[]
+   */
   public int[] getScoresAverages(){
     return scoreAverages;
   }
+  
+  /** 
+   * @param scores
+   */
   public void setScoresAverages(int scores){
     boolean finished = false;
     for(int i = 0;i<MAX_PUBLIC_SCORES && !finished ;i++){
@@ -34,6 +50,10 @@ public class Public extends Playlist {
       }
     }
   }
+  
+  /** 
+   * @return int
+   */
   public int setLengthToPlaylist(){
     int totalLength = 0;
     for(int i = 0;i<MAX_SONGS; i++){
@@ -43,6 +63,10 @@ public class Public extends Playlist {
     }
     return totalLength;
  }
+ 
+ /** 
+  * @return Genre[]
+  */
  public Genre[] setGenresToPlaylist(){
   Genre[] genre = new Genre[MAX_SONGS];
   for(int i = 0; i<MAX_SONGS;i++){
@@ -52,6 +76,11 @@ public class Public extends Playlist {
   }
   return genre;
 }
+  
+  /** 
+   * @param scoreAverages
+   * @return double
+   */
   public double average(int[] scoreAverages){
     double averages = 0;
     double count = 0;
@@ -66,6 +95,10 @@ public class Public extends Playlist {
     return averages;
   }
 
+ 
+ /** 
+  * @return String
+  */
  @Override
        public String showInfo(){
           String contents = super.showContents();

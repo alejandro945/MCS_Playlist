@@ -10,9 +10,17 @@ public class Private extends Playlist {
         privateUsers = new User[MAX_PRIVATE_USERS];
         songList = new Song[MAX_SONGS];
     }
+    
+    /** 
+     * @return Song[]
+     */
     public Song[] getSongList(){
         return songList;
     }
+    
+    /** 
+     * @param song
+     */
     public void setSongList(Song song){
         boolean space = false;
         for(int i = 0; i<MAX_SONGS && !space;i++){
@@ -22,6 +30,10 @@ public class Private extends Playlist {
         }
         }
     }
+    
+    /** 
+     * @return int
+     */
     public int setLengthToPlaylist(){
         int totalLength = 0;
         for(int i = 0;i<MAX_SONGS; i++){
@@ -31,6 +43,10 @@ public class Private extends Playlist {
         }
         return totalLength;
      }
+     
+     /** 
+      * @return Genre[]
+      */
      public Genre[] setGenresToPlaylist(){
          Genre[] genre = new Genre[MAX_SONGS];
          for(int i = 0; i<MAX_SONGS;i++){
@@ -40,9 +56,18 @@ public class Private extends Playlist {
          }
          return genre;
      }
+    
+    /** 
+     * @return User[]
+     */
     public User[] getPrivateUsers(){
         return privateUsers;
     }
+    
+    /** 
+     * @param restricted
+     * @return boolean
+     */
     public boolean setPrivateUsers(User restricted){
         boolean space = false;
         for(int i = 0; i<MAX_PRIVATE_USERS && !space;i++){
@@ -53,6 +78,10 @@ public class Private extends Playlist {
         } 
         return space;
     }
+    
+    /** 
+     * @return String
+     */
     @Override
     public String showInfo(){
        String contents = super.showContents() ;

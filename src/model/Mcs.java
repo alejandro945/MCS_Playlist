@@ -14,6 +14,13 @@ public class Mcs {
         playlists = new Playlist[MAX_PLAYLIST];
     } 
 
+    
+    /** 
+     * @param userNickName
+     * @param password
+     * @param age
+     * @return String
+     */
     public String addUser(String userNickName,String password, int age){
         String msg = "No se pudo agregar el usuario";
         User newUser = new User(userNickName,password,age);
@@ -27,6 +34,12 @@ public class Mcs {
         }
         return msg;
         }
+    
+    /** 
+     * @param userNickName
+     * @param password
+     * @return boolean
+     */
     public boolean searchUser(String userNickName,String password){
         boolean userExist = false;
         int i = 0;
@@ -37,6 +50,12 @@ public class Mcs {
         }
         return userExist;
     }
+    
+    /** 
+     * @param userNickName
+     * @param identified
+     * @return boolean
+     */
     public boolean searchPlaylistUser(String userNickName,Playlist identified){
         boolean userExist = false;
         int i = 0;
@@ -61,6 +80,17 @@ public class Mcs {
         return userExist;
     }
 
+    
+    /** 
+     * @param title
+     * @param artistName
+     * @param streamingDate
+     * @param songLength
+     * @param genre
+     * @param songOwner
+     * @param ownerPassword
+     * @return String
+     */
     public String addSong(String title, String artistName, String streamingDate, int songLength, Genre genre,String songOwner,String ownerPassword){
         String msg = "No se pudo agregar la cancion";
         Song newSong = new Song(title,artistName,streamingDate,songLength,genre,songOwner,ownerPassword);
@@ -74,6 +104,11 @@ public class Mcs {
         }
         return msg;
    }
+   
+   /** 
+    * @param title
+    * @return boolean
+    */
    public boolean searchSong(String title){
     boolean songExist = false;
     int i = 0;
@@ -84,6 +119,12 @@ public class Mcs {
     }
     return songExist;
 }
+  
+  /** 
+   * @param playlistName
+   * @param playlistType
+   * @return String
+   */
   public String addPlaylist (String playlistName, int playlistType){
     String msg = "No se pudo agregar el playlist";
     Playlist newPublicPlaylist = new Public(playlistName, playlistType);
@@ -107,6 +148,11 @@ public class Mcs {
     }
     return msg;
   }
+  
+  /** 
+   * @param playlistName
+   * @return Playlist
+   */
   public Playlist searchPlaylist(String playlistName){
       boolean playlistExist = false;
       Playlist identified = null;
@@ -145,6 +191,12 @@ public class Mcs {
        }
    }
   
+   
+   /** 
+    * @param userNickName
+    * @param identified
+    * @return String
+    */
    public String addUserToPlaylist(String userNickName, Playlist identified){
     String msg = "No se pudo agregar el usuario";
     int i = 0;
@@ -167,6 +219,12 @@ public class Mcs {
 }
     return msg;
 }
+   
+   /** 
+    * @param title
+    * @param identified
+    * @return String
+    */
    public String addSongToPlaylist(String title, Playlist identified){
          String msg = "No se pudo agregar la cancion";
          int i = 0;
@@ -192,6 +250,12 @@ public class Mcs {
     }
          return msg;
    }
+   
+   /** 
+    * @param scores
+    * @param identified
+    * @return String
+    */
    public String addScores(int scores, Playlist identified){
        String msg = "No se pudo adiccionar tu calificacion";
        if(identified instanceof Public){
@@ -239,6 +303,10 @@ public class Mcs {
         }
        }
    }
+   
+   /** 
+    * @return String
+    */
    public String showUsers(){
        String content = "";
        for(int i = 0 ; i<MAX_USERS;i++){
@@ -249,6 +317,10 @@ public class Mcs {
     }
      return content;
    }
+   
+   /** 
+    * @return String
+    */
    public String showSongs(){
     String content = "";
     for(int i = 0 ; i<MAX_SONGS;i++){
@@ -258,6 +330,10 @@ public class Mcs {
   }
   return content;
 }
+
+/** 
+ * @return String
+ */
 public String showPlaylists(){
     String content = "";
     for(int i = 0 ; i<MAX_PLAYLIST;i++){
@@ -269,6 +345,10 @@ public String showPlaylists(){
   }
   return content;
 }
+
+/** 
+ * @return String
+ */
 public String showGenericPlaylists(){
     String content = "";
     for(int i = 0 ; i<MAX_PLAYLIST;i++){
