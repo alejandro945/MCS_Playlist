@@ -7,6 +7,10 @@ public class Menu {
     private static Scanner sc = new Scanner(System.in);
     private Mcs mcs;
 
+
+    /**
+     * The constructor method of the model main class or mcs Object<br>
+     */
     public Menu() {
         this.mcs = new Mcs();
     }
@@ -28,8 +32,10 @@ public class Menu {
     }
 
     
-    
     /** 
+     * Reads the option entered by console <br>
+     * <b> pre: </b> Positive integer number which is != String and 1 <= choice <= 8 <br>
+     * <b> post: </b> It will return an int for its corresponding use <br>
      * @return int
      */
     public int readOption() {
@@ -40,6 +46,9 @@ public class Menu {
 
     
     /** 
+     * Reads or captures the pertinent information for the creation of a user <br>
+     * <b> pre: </b> userNickName can not have spaces or just a word <br>
+     * <b> post: </b> It will create an user Object and return a message type String indicating the status of the request <br>
      * @return String
      */
     public String readUser() {
@@ -54,6 +63,9 @@ public class Menu {
 
     
     /** 
+     * Reads or captures the pertinent information for the creation of a song in the App <br>
+     * <b> pre: </b> gne != String and 1<= gne <=6 <br>
+     * <b> post: </b> It will create a song Object and return a message type String indicating the status of the request <br>
      * @return String
      */
     public String readSong() {

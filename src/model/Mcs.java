@@ -8,6 +8,10 @@ public class Mcs {
     private Playlist[] playlists;
     private Song[] poolSongs;
   
+
+    /**
+     * The constructor method of the model main class or mcs Object<br>
+     */
     public Mcs(){
         users = new User [MAX_USERS];
         poolSongs = new Song [MAX_SONGS];
