@@ -43,5 +43,6 @@ public class Main {
         Menu a;
         a = new Menu();
         a.startProgram();
+        
     }
 }

@@ -7,14 +7,16 @@ public class Menu {
     private static Scanner sc = new Scanner(System.in);
     private Mcs mcs;
 
-
     /**
-     * The constructor method of the model main class or mcs Object<br>
+     * The constructor method of the menu Object<br>
      */
     public Menu() {
         this.mcs = new Mcs();
     }
 
+    /**
+     * Shows the principal menu and general funtional requirements of our App <br>
+     */
     public void showMenu() {
         System.out.println("MENU PRINCIPAL: Elija una opcion segun su requerimiento");
         System.out.println("-------------------------------CREAR-------------------------------");
@@ -31,12 +33,13 @@ public class Menu {
         System.out.println("(8) Salir de App");
     }
 
-    
-    /** 
+    /**
      * Reads the option entered by console <br>
-     * <b> pre: </b> Positive integer number which is != String and 1 <= choice <= 8 <br>
+     * <b> pre: </b> Positive integer number which is diferent to String and 1 less
+     * than or equal to choice less than or equal to 8 <br>
      * <b> post: </b> It will return an int for its corresponding use <br>
-     * @return int
+     * 
+     * @return choice
      */
     public int readOption() {
         int choice = sc.nextInt();
@@ -44,11 +47,13 @@ public class Menu {
         return choice;
     }
 
-    
-    /** 
-     * Reads or captures the pertinent information for the creation of a user <br>
-     * <b> pre: </b> userNickName can not have spaces or just a word <br>
-     * <b> post: </b> It will create an user Object and return a message type String indicating the status of the request <br>
+    /**
+     * Reads or captures the pertinent information for setting a user up <br>
+     * <b> pre: </b> userNickName can not have spaces or it could be just a word
+     * <br>
+     * <b> post: </b> It will create a user Object and will return a String message
+     * indicating the status of the request <br>
+     * 
      * @return String
      */
     public String readUser() {
@@ -61,11 +66,14 @@ public class Menu {
         return mcs.addUser(userNickName, password, age);
     }
 
-    
-    /** 
-     * Reads or captures the pertinent information for the creation of a song in the App <br>
-     * <b> pre: </b> gne != String and 1<= gne <=6 <br>
-     * <b> post: </b> It will create a song Object and return a message type String indicating the status of the request <br>
+    /**
+     * Reads or captures the pertinent information for the creation of a song in the
+     * App <br>
+     * <b> pre: </b> gne diferent to String and 1 less than or equal to gne less
+     * than or equal to 6 <br>
+     * <b> post: </b> It will create a song Object and will return a String message
+     * indicating the status of the request <br>
+     * 
      * @return String
      */
     public String readSong() {
@@ -114,8 +122,14 @@ public class Menu {
         }
     }
 
-    
-    /** 
+    /**
+     * Reads or captures the pertinent information for the creation of a general
+     * playlist in the App <br>
+     * <b> pre: </b> playlistType diferent to String and 1 less than or equal
+     * toplaylistType less than or equal to 3 <br>
+     * <b> post: </b> It will create a playlist Object and will return a String
+     * message indicating the status of the request <br>
+     * 
      * @return String
      */
     public String readPlaylist() {
@@ -126,6 +140,13 @@ public class Menu {
         return mcs.addPlaylist(playlistName, playlistType);
     }
 
+    /**
+     * Shows the playlist menu and specific funtional requirements for the playlist
+     * <br>
+     * <b> pre: </b> option have to be a positive integer numbre and 1 less than or
+     * equal to option less than or equal to 5 <br>
+     * <b> post:</b> Will perform an action regarding the user's request <br>
+     */
     public void showMenuPlaylist() {
         int option = 0;
         System.out.println("PLALIST MENU: Elija una opcion segun su requerimiento");
@@ -158,8 +179,13 @@ public class Menu {
         }
     }
 
-    
-    /** 
+    /**
+     * Add or provide access to a user in a private or restricted playlist <br>
+     * <b> pre: </b> Even if we have implemented an error message, it is better to
+     * write the playlist name, the user nickName and password correctly for correct
+     * operation<br>
+     * <b> post:</b> It will provide a type of access to an specific user <br>
+     * 
      * @return String
      */
     public String playlistRegistration() {
@@ -186,8 +212,15 @@ public class Menu {
         return msg;
     }
 
-    
-    /** 
+    /**
+     * Add a song to a playlist <br>
+     * <b> pre: </b> Even if we have implemented an error message, it is better to
+     * write the name of the playlist, the song title and the name of the user with
+     * access depending of the case correctly, for correct operation<br>
+     * <b> post: </b> It will add an exist song in the array of each pertinent
+     * playlist and will return a String message indicating the status of the
+     * request<br>
+     * 
      * @return String
      */
     public String playlistSongs() {
@@ -196,11 +229,23 @@ public class Menu {
         sc.nextLine();
         String playlistName = sc.nextLine();
         Playlist playExist = mcs.searchPlaylist(playlistName);
-        if (playExist != null && playExist.getPlaylistType() == 2 || playExist.getPlaylistType() == 3) {
-            System.out.println("Ingrese el nombre del usuario con acceso");
-            String userNickName = sc.nextLine();
-            boolean userExist = mcs.searchPlaylistUser(userNickName, playExist);
-            if (userExist) {
+        if (playExist != null) {
+            if (playExist.getPlaylistType() == 2 || playExist.getPlaylistType() == 3) {
+                System.out.println("Ingrese el nombre del usuario con acceso");
+                String userNickName = sc.nextLine();
+                boolean userExist = mcs.searchPlaylistUser(userNickName, playExist);
+                if (userExist) {
+                    System.out.println("Ingrese el nombre de la cancion a agregar");
+                    String title = sc.nextLine();
+                    boolean exist = mcs.searchSong(title);
+                    if (exist) {
+                        return mcs.addSongToPlaylist(title, playExist);
+                    } else {
+                        String nounSong = "No existe la canción mencionada";
+                        return nounSong;
+                    }
+                }
+            } else if (playExist.getPlaylistType() == 1) {
                 System.out.println("Ingrese el nombre de la cancion a agregar");
                 String title = sc.nextLine();
                 boolean exist = mcs.searchSong(title);
@@ -212,23 +257,17 @@ public class Menu {
                 }
             }
         }
-        if (playExist != null && playExist.getPlaylistType() == 1) {
-            System.out.println("Ingrese el nombre de la cancion a agregar");
-            String title = sc.nextLine();
-            boolean exist = mcs.searchSong(title);
-            if (exist) {
-                return mcs.addSongToPlaylist(title, playExist);
-            } else {
-                String nounSong = "No existe la canción mencionada";
-                return nounSong;
-            }
-        } else {
-            return msg;
-        }
+        return msg;
     }
 
-    
-    /** 
+    /**
+     * Add a note or rating to a public playlist <br>
+     * <b> pre: </b> 1 less than or equal to scores less than or equal to 5.Futher
+     * even if we have implemented an error message, it is better to write the name
+     * of the playlist correctly for correct operation <br>
+     * <b> post: </b> It will add a rating for a particular public playlist and will
+     * return a String message indicating the status of the request <br>
+     * 
      * @return String
      */
     public String scoresPlaylist() {
@@ -245,9 +284,11 @@ public class Menu {
         return msg;
     }
 
-    
-    /** 
-     * @param choice
+    /**
+     * Will execute the pertinent request of the user in the main menu <br>
+     * 
+     * @param choice Positive integer number which is diferent to String and 1 less
+     *               than or equal to choice less than or equal to 8 <br>
      */
     public void doOperation(int choice) {
         switch (choice) {
@@ -285,6 +326,10 @@ public class Menu {
         }
     }
 
+    /**
+     * This method will display our main menu while option diferent of 8 at the same
+     * time of run our App <br>
+     */
     public void startProgram() {
         int option;
         do {
